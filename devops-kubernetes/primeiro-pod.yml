@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: primeiro-pod-declarativo
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+
+# entrar na pasta onde está o arquivo e executar: 
+# kubectl apply -f nome-do-arquivo
+
+# excluir um pod
+# kubectl delete pods nome-do-pod
