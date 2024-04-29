@@ -3,6 +3,7 @@ kind: ReplicaSet
 metadata:
   name: portal-noticias-replicaset
 spec: 
+  replicas: 3
   template:
     metadata:
       name: portal-noticias
@@ -17,7 +18,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: portal-configmap
-  replicas: 3
   selector:
     matchLabels:
       app: portal-noticias
