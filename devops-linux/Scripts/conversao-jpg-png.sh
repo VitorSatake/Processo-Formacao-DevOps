@@ -13,7 +13,6 @@
 #ao certo quantos parâmetros são.
 
 # melhorando o script
-#!/bin/bash
 
 converte_imagem(){
 cd ~/Downloads/imagens-livros
