@@ -5,29 +5,29 @@ import uuid
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Query, Response
 from pydantic import BaseModel, Field, constr, model_serializer
-import psycopg2
-from psycopg2.extras import DictCursor
+import psycopg2  
+from psycopg2.extras import DictCursor  
 from datetime import date
 import os
 
 
 app = FastAPI()
 
-load_dotenv("ambiente/.env")
+#load_dotenv("ambiente/.env")
 
 conn = psycopg2.connect(
-    dbname=os.getenv("dbname"),
-    user=os.getenv("user"),
-    password=os.getenv("password"),
-    host=os.getenv("host"),
-    port=os.getenv("port")
+    dbname=os.getenv("postgres"),
+    user=os.getenv("postgres"),
+    password=os.getenv("root"),
+    host=os.getenv("localhost"),
+    port=os.getenv("5432")
 )
 
 class Pessoa(BaseModel):
 
     id: UUID = None
-    nome: Union[constr(max_length=100), str, int, float, bool]
-    apelido: constr(max_length=32)
+    nome: Union[constr(max_length=100), str, int, float, bool] # type: ignore
+    apelido: constr(max_length=32) # type: ignore
     nascimento: str
     stack: list[Union[str, int]] = constr(max_length=3)
 
@@ -130,7 +130,7 @@ def search_pessoa(t: str):
             raise HTTPException(status_code=200, detail="[]")
 
 
-'''if __name__ == "__main__":
+if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="127.0.0.1", port=8080)'''
+    uvicorn.run(app, host="127.0.0.1", port=8080)
