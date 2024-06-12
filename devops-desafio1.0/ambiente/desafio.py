@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field, constr, model_serializer
 from tinydb import TinyDB, Query
 from typing import Optional
 import json
-import psycopg2
+#import psycopg2
 
 app = FastAPI()
 
@@ -73,8 +73,8 @@ def buscar(t: str):
         raise HTTPException(status_code=404, detail="Nenhum resultado encontrado")
     return resultados
 
-'''if __name__ == "__main__":
+if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="127.0.0.1", port=8080)'''
+    uvicorn.run(app, host="127.0.0.1", port=8000)
 
